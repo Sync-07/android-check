@@ -2,7 +2,10 @@
 
 static __usingAndroidClient[MAX_PLAYERS];
 
-// Taken from: https://github.com/pawn-lang/YSI-Includes/YSI_Core/y_master/y_rconfix.inc
+// Taken from: 
+//  - https://github.com/pawn-lang/YSI-Includes/blob/aaeb2cc8200bfc64c0133002e7ce6398ea6c5959/YSI_Core/y_master/y_rconfix.inc
+//  - https://github.com/pawn-lang/sa-mp-fixes/issues/80#issuecomment-338402500
+// By: Y_Less 
 stock rconfix_Load()
 {
 	// It is.  Create the file.
