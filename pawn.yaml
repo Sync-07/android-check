@@ -1,0 +1,14 @@
+site: ""
+user: ff-agus44
+repo: android-check
+dependencies:
+- sampctl/samp-stdlib
+contributors:
+- Fairuz-Afdhal
+- ff-agus44
+
+# For tests only
+entry: test.pwn
+output: gamemodes/test.amx
+local: true
+
