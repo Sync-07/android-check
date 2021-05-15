@@ -63,7 +63,7 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerDisconnect(playerid, reason)
 {
 	// when player exit, we need to reset it back to "true"
-	clientType[playerid] = USING_CLIENT_ANDROID;
+	clientType[playerid] = CLIENT_TYPE_ANDROID;
 	return 1;
 }
 
