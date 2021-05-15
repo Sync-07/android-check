@@ -75,7 +75,6 @@ stock Client:GetClientType(playerid)
 	return clientType[playerid];
 }
 
-#pragma deprecated Please use GetClientType instead
 stock IsPlayerUsingAndroid(playerid)
 {
 	return (clientType[playerid] != CLIENT_TYPE_PC);
