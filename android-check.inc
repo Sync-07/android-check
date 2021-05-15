@@ -21,6 +21,10 @@
  	forward OnClientChecked(playerid, Client:type);
 #endif
 
+#if !defined SendClientCheck
+	native SendClientCheck(playerid, type, memAddr, memOffset, byteCount);
+#endif
+
 enum Client {
 	USING_CLIENT_PC,
 	USING_CLIENT_ANDROID
