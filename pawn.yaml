@@ -3,6 +3,7 @@ user: ff-agus44
 repo: android-check
 dependencies:
 - sampctl/samp-stdlib
+- pawn-lang/YSI-Includes@5.x
 contributors:
 - Fairuz-Afdhal
 - ff-agus44
