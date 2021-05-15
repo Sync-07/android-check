@@ -31,7 +31,7 @@ in your pawn.json or pawn.yaml if you are sampctl users, otherwise just ignore t
 #include <a_samp>
 #include <android-check>
 
-public OnPlayerConnect(playerid)
+public OnClientChecked(playerid)
 {
 	if (IsPlayerUsingAndroid(playerid))
 	{
@@ -41,6 +41,8 @@ public OnPlayerConnect(playerid)
 }
 
 ```
+
+***NOTE:** you cannot use this inside OnPlayerConnect, that is why i made a custom one :>*
 
 ## Testing
 
