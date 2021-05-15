@@ -26,18 +26,18 @@
 #endif
 
 enum Client {
-	USING_CLIENT_PC,
-	USING_CLIENT_ANDROID
+	CLIENT_TYPE_PC,
+	CLIENT_TYPE_ANDROID
 };
 
-static stock Client:clientType[MAX_PLAYERS] = {USING_CLIENT_ANDROID, ...};
+static stock Client:clientType[MAX_PLAYERS] = {CLIENT_TYPE_ANDROID, ...};
 
 DEFINE_HOOK_REPLACEMENT__(ClientCheck, ClCheck);
 hook FIXES_OnClCheckResponse(playerid, actionid, memaddr, retndata) 
 {
 	if (actionid == 0x48) 
 	{
-		clientType[playerid] = USING_CLIENT_PC;
+		clientType[playerid] = CLIENT_TYPE_PC;
 	}
 	return 1;
 }
