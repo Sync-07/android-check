@@ -1,8 +1,13 @@
 #include <a_samp>
+
+#define YSI_NO_HEAP_MALLOC
+#define YSI_NO_OPTIMISATION_MESSAGE
+#define YSI_NO_MODE_CACHE
+#define YSI_NO_VERSION_CHECK
+
 #include "android-check.inc"
 
 main() {}
-
 
 public OnGameModeInit() 
 {
@@ -10,7 +15,7 @@ public OnGameModeInit()
 	return 1;
 }
 
-public OnPlayerRequestSpawn(playerid)
+public OnClientChecked(playerid)
 {
 	new szMessages[64];
 	format(szMessages, sizeof(szMessages), "Menggunakan %s", (IsPlayerUsingAndroid(playerid)) ? ("Android") : ("PC"));
