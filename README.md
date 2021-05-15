@@ -33,7 +33,7 @@ in your pawn.json or pawn.yaml if you are sampctl users, otherwise just ignore t
 
 public OnClientChecked(playerid, Client:type)
 {
-	if (type == USING_CLIENT_ANDROID)
+	if (type == CLIENT_TYPE_ANDROID)
 	{
 		return Ban(playerid);
 	}
