@@ -18,18 +18,22 @@
 #endif
 
 #if defined OnClientChecked
- 	forward OnClientChecked(playerid);
+ 	forward OnClientChecked(playerid, Client:type);
 #endif
 
-static stock usingAndroidClient[MAX_PLAYERS] = {true, ...};
+enum Client {
+	USING_CLIENT_PC,
+	USING_CLIENT_ANDROID
+};
+
+static stock Client:clientType[MAX_PLAYERS] = {USING_CLIENT_ANDROID, ...};
 
 DEFINE_HOOK_REPLACEMENT__(ClientCheck, ClCheck);
 hook FIXES_OnClCheckResponse(playerid, actionid, memaddr, retndata) 
 {
 	if (actionid == 0x48) 
 	{
-		usingAndroidClient[playerid] = false;
-		CallLocalFunction(#OnClientChecked, "i", playerid);
+		clientType[playerid] = USING_CLIENT_PC;
 	}
 	return 1;
 }
@@ -48,19 +52,33 @@ hook OnPlayerConnect(playerid)
 	// SendClientCheck example script by evgen1137
 	// thanks to MTA devs for structs
 	SendClientCheck(playerid, 0x48, 0, 0, 2);
+	SetTimerEx(#__InternalCheck, 1000, false, "i", playerid);
 	return 1;
 }
 
 hook OnPlayerDisconnect(playerid, reason)
 {
 	// when player exit, we need to reset it back to "true"
-	usingAndroidClient[playerid] = true;
+	clientType[playerid] = USING_CLIENT_ANDROID;
 	return 1;
 }
 
+forward __InternalCheck(playerid);
+public __InternalCheck(playerid)
+{
+    CallLocalFunction(#OnClientChecked, "ii", playerid, _:clientType[playerid]);
+    return 1;
+}
+
+stock Client:GetClientType(playerid)
+{
+	return clientType[playerid];
+}
+
+#pragma deprecated Please use GetClientType instead
 stock IsPlayerUsingAndroid(playerid)
 {
-	return usingAndroidClient[playerid];
+	return (clientType[playerid] != CLIENT_TYPE_PC);
 }
 
 /* 
@@ -70,6 +88,7 @@ stock IsPlayerUsingAndroid(playerid)
   		- https://github.com/pawn-lang/YSI-Includes/blob/aaeb2cc8200bfc64c0133002e7ce6398ea6c5959/YSI_Core/y_master/y_rconfix.inc
   		- https://github.com/pawn-lang/sa-mp-fixes/issues/80#issuecomment-338402500
 */
+
 stock LoadClientCheckFix()
 {
 	// If it is not exists, create the file first.
