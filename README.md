@@ -31,9 +31,9 @@ in your pawn.json or pawn.yaml if you are sampctl users, otherwise just ignore t
 #include <a_samp>
 #include <android-check>
 
-public OnClientChecked(playerid)
+public OnClientChecked(playerid, Client:type)
 {
-	if (IsPlayerUsingAndroid(playerid))
+	if (type == USING_CLIENT_ANDROID)
 	{
 		return Ban(playerid);
 	}
