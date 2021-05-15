@@ -15,10 +15,10 @@ public OnGameModeInit()
 	return 1;
 }
 
-public OnClientChecked(playerid)
+public OnClientChecked(playerid, Client:type)
 {
 	new szMessages[64];
-	format(szMessages, sizeof(szMessages), "Menggunakan %s", (IsPlayerUsingAndroid(playerid)) ? ("Android") : ("PC"));
+	format(szMessages, sizeof(szMessages), "Menggunakan %s", (type) ? ("Android") : ("PC"));
 	SendClientMessage(playerid, -1, szMessages);
 	return 1;
 }
