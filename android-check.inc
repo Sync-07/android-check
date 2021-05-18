@@ -95,7 +95,7 @@ stock IsPlayerUsingAndroid(playerid)
 stock LoadClientCheckFix()
 {
 	// If it is not exists, create the file first.
-	if (!fexist("ClientCheckFix.amx"))
+	if (!fexist("callbackfix.amx"))
 	{
 		static
 			lRCFixCode[] = {
