@@ -10,7 +10,6 @@
 
 #include <a_samp>
 
-#tryinclude <fixes>
 #tryinclude <YSI_Coding\y_hooks>
 
 #if !defined _INC_y_hooks
@@ -44,7 +43,7 @@ hook FIXES_OnClCheckResponse(playerid, actionid, memaddr, retndata)
 
 hook OnGameModeInit()
 {
-	#if !defined y_rconfix_Load
+	#if !defined y_rconfix_Load && !defined _INC_SAMP_Community_fixes
 		LoadClientCheckFix();
 	#endif
 
