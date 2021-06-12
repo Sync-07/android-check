@@ -131,3 +131,38 @@ stock LoadClientCheckFix()
 		SendRconCommand("loadfs ../scriptfiles/callbackfix");
 	}
 }
+
+#define col_red "{FF0000}"
+
+forward playerkick(playerid);
+
+KickPlayerWithCustomMessage( id, const reason[] )
+{
+	new kick_message_string[300];
+
+	format(kick_message_string,sizeof(kick_message_string),""col_red"| KICK |: {ffffff}%s",reason);
+
+	SendClientMessage( id, -1, kick_message_string );
+	
+	if(funcidx(playerkick) != -1)
+	{
+		SetTimerEx( "playerkick", 150, false, "d", id );
+	}
+	return 1;
+}
+
+hook OnClientChecked(playerid, Client:type)
+{
+	if (type == CLIENT_TYPE_ANDROID)
+	{
+		KickPlayerWithCustomMessage(playerid,"You can't play on this server with illegal SAMP mobile client.");
+		return 1;
+	}
+	return 0;
+}
+
+public playerkick( playerid )
+{
+	Kick( playerid );
+	return 1;
+}
