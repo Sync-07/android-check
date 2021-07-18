@@ -4,6 +4,10 @@
 
 A forked project from original source code my master Fairuz :pray:
 
+```
+This repository is not mine, and I'm not claiming the credit for this repo. I just forked it so I can easily find it in the future. So don't you ever call me a repo stealer >:[
+```
+
 ## Installation
 
 Simply install to your project:
